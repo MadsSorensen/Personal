@@ -9,26 +9,30 @@
     <!--SignalR scripts-->
     <script src="Scripts/jquery.signalR-2.3.0.min.js"></script>
     <script src="signalr/hubs"></script>
+    <script src="Scripts/moment.min.js"></script>
     <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-moment.js"></script>
     <script src="Scripts/Controllers/mainController.js"></script>
     <script src="Scripts/Directives/ngChatBox.js"></script>
+    <script src="Scripts/Directives/ngChatChanged.js"></script>
 </head>
 <body>
     <div ng-app="chat" ng-controller="main">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6 col-sm-offset-3">
+                <div class="col-sm-8 col-sm-offset-2">
                     <div class="panel panel-default">
                         <div class="panel-heading">Welcome to <span ng-bind="appName"></span></div>
                         <div class="panel-body">
                             <div ng-repeat="item in messages">
-                                <ng-chat-box></ng-chat-box>
+                                <ng-chat-changed ng-if="item.isChat === false"></ng-chat-changed>
+                                <ng-chat-box ng-if="item.isChat"></ng-chat-box>
                             </div>
                         </div>
                         <div class="panel-footer">
                             <div class="row">
                                 <div class="col-md-10">
-                                    <input type="text" ng-model="entry" class="form-control" />
+                                    <input type="text" ng-keypress="enter($event)" ng-model="entry" class="form-control" />
                                 </div>
                                 <div class="col-md-2">
                                     <input type="button" ng-click="submit()" class="btn btn-success" value="Send!" />
