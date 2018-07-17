@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--SignalR scripts-->
+    <script src="Scripts/jquery.signalR-2.3.0.min.js"></script>
+    <script src="signalr/hubs"></script>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/Controllers/mainController.js"></script>
+    <script src="Scripts/Directives/ngChatBox.js"></script>
+</head>
+<body>
+    <div ng-app="chat" ng-controller="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Welcome to <span ng-bind="appName"></span></div>
+                        <div class="panel-body">
+                            <div ng-repeat="item in messages">
+                                <ng-chat-box></ng-chat-box>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <input type="text" ng-model="entry" class="form-control" />
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="button" ng-click="submit()" class="btn btn-success" value="Send!" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
