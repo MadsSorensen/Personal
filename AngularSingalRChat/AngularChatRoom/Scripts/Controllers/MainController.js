@@ -6,7 +6,6 @@ app.controller('main', function ($scope) {
     $scope.name = prompt("What is your name");
     $scope.enter = function (event) {
         if (event.which === 13) {
-            console.log(event);
             $scope.submit();
             $scope.entry = "";
         }
