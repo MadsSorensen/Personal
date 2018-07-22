@@ -1,0 +1,37 @@
+﻿<form name="loginForm">
+    <div class="panel-body">
+        <div class="col-sm-4 col-sm-offset-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Welcome to <span ng-bind="appName"></span>
+                    <br />
+                    <span ng-show="isRegistered" style="color:steelblue">Thanks for registering! Log in below to start chatting!</span>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" id="username" aria-describedby="usernamehelp" ng-model="loginInfo.username" placeholder="Enter username">
+                        <small id="usernamehelp" class="form-text text-muted">Enter your username here!</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" aria-describedby="passwordhelp" ng-model="loginInfo.password" placeholder="Enter password">
+                        <small id="passwordhelp" class="form-text text-muted">Enter your password here!</small>
+                        <br />
+                        <small id="error" style="color:red" class="form-text" ng-bind="loginError"></small>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <input type="button" class="btn btn-primary" ng-click="loginFunc()" value="Login" />
+                        </div>
+                        <div class="col-sm-4 col-sm-offset-4">
+                            <input type="button" class="btn btn-primary" ng-click="register(false)" value="Register!" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

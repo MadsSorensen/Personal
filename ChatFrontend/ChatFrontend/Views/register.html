@@ -1,0 +1,38 @@
+﻿<form name="registerForm">
+    <div class="panel-body">
+        <div class="col-sm-4 col-sm-offset-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">Welcome to <span ng-bind="appName"></span> - Register! <a href="#" style="float:right" ng-click="register(true)">Back</a></div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" id="username" aria-describedby="usernamehelp" ng-model="registerInfo.username" placeholder="Enter username">
+                        <small id="usernamehelp" class="form-text text-muted">Enter your username here!</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" aria-describedby="passwordhelp" ng-model="registerInfo.password" placeholder="Enter password">
+                        <small id="passwordhelp" class="form-text text-muted">Enter your password here!</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="passwordagain">Password</label>
+                        <input type="password" class="form-control" id="passwordAgain" aria-describedby="passwordagainhelp" ng-model="registerInfo.passwordAgain" placeholder="Enter password again">
+                        <small id="passwordagainhelp" class="form-text text-muted">Enter your password again here!</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" aria-describedby="name" ng-model="registerInfo.name" placeholder="Enter your name">
+                        <small id="namehelp" class="form-text text-muted">Enter your name here!</small>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <input type="button" class="btn btn-primary" ng-click="signupFunc()" value="Sign up!" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

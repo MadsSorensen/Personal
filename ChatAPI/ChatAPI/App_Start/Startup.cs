@@ -17,7 +17,6 @@ namespace ChatAPI.App_Start
         {
             HttpConfiguration config = new HttpConfiguration();
             ConfigureOAuth(app);
-            app.UseCors(CorsOptions.AllowAll);
             WebApiConfig.Register(config);
             app.UseWebApi(config);
         }

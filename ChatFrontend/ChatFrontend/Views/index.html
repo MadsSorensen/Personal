@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="/Scripts/moment.min.js"></script>
+    <script src="/Scripts/angular.min.js"></script>
+    <script src="/Scripts/angular-animate.min.js"></script>
+    <script src="/Scripts/angular-moment.js"></script>
+    <script src="/Scripts/app.js"></script>
+    <script src="/Scripts/Controllers/mainController.js"></script>
+    <script src="/Scripts/Controllers/chatController.js"></script>
+
+    <style>
+        .my-fade-container {
+            position: relative;
+        }
+
+        .my-fade-animation.ng-enter {
+            -webkit-transition: 0.5s linear all;
+            -moz-transition: 0.5s linear all;
+            -o-transition: 0.5s linear all;
+            transition: 0.5s linear all;
+        }
+
+        .my-fade-animation.ng-enter {
+            z-index: 100;
+            opacity: 0;
+        }
+
+            .my-fade-animation.ng-enter.ng-enter-active {
+                opacity: 1;
+            }
+
+        .my-fade-animation.ng-leave {
+            z-index: 101;
+            opacity: 1;
+        }
+
+            .my-fade-animation.ng-leave.ng-leave-active {
+                opacity: 0;
+            }
+
+    </style>
+</head>
+<body ng-app="chat">
+    <div ng-controller="main" ng-show="isLoggedIn == false">
+        <div class="container">
+            <div class="row">
+                <div ng-if="login" ng-include="'login.html'" class="my-fade-animation"></div>
+                <div ng-if="!login" ng-include="'register.html'" class="my-fade-animation"></div>
+            </div>
+        </div>
+    </div>
+    <div ng-controller="chat" ng-show="init">
+        <div ng-include="'chat.html'" class="my-fade-animation"></div>
+    </div>
+</body>
+</html>
