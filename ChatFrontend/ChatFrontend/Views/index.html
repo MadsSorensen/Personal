@@ -4,7 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <!--SignalR-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="/Scripts/jquery.signalR-2.3.0.min.js"></script>
+    <script src="http://localhost:49689/signalr/hubs"></script>
+    <!--Angular-->
     <script src="/Scripts/moment.min.js"></script>
     <script src="/Scripts/angular.min.js"></script>
     <script src="/Scripts/angular-animate.min.js"></script>
@@ -12,7 +16,7 @@
     <script src="/Scripts/app.js"></script>
     <script src="/Scripts/Controllers/mainController.js"></script>
     <script src="/Scripts/Controllers/chatController.js"></script>
-
+    <script src="/Scripts/Factories/signalRFactory.js"></script>
     <style>
         .my-fade-container {
             position: relative;
@@ -42,7 +46,6 @@
             .my-fade-animation.ng-leave.ng-leave-active {
                 opacity: 0;
             }
-
     </style>
 </head>
 <body ng-app="chat">
@@ -54,7 +57,7 @@
             </div>
         </div>
     </div>
-    <div ng-controller="chat" ng-show="init">
+    <div ng-controller="chat" ng-show="isLoggedIn">
         <div ng-include="'chat.html'" class="my-fade-animation"></div>
     </div>
 </body>

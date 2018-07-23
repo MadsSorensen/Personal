@@ -9,7 +9,7 @@
         });
     $rootScope.appName = "TestApp";
     $scope.login = true;
-    $scope.isLoggedIn = false;
+    $rootScope.isLoggedIn = localStorage.getItem('access_token') != undefined;
     //Login
     $scope.loginInfo = {};
     $scope.isLoginFail = false;
@@ -37,8 +37,7 @@
             .then(function (response) {
                 console.log(response);
                 localStorage.setItem("access_token", response.data.access_token);
-                $rootScope.$broadcast('loginEvent');
-                $scope.isLoggedIn = true;
+                $rootScope.isLoggedIn = true;
             }).catch(function (response) {
                 $scope.isLoginFail = true;
                 $scope.loginError = response.data.error_description;

@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Web.Http;
 using ChatAPI.Authentication;
+using Microsoft.AspNet.SignalR;
 using Microsoft.Owin;
 using Microsoft.Owin.Cors;
 using Microsoft.Owin.Security.OAuth;
@@ -31,6 +32,23 @@ namespace ChatAPI.App_Start
             };
             app.UseOAuthAuthorizationServer(oAuthAuthorizationServerOptions);
             app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
+
+            app.Map("/signalr", x =>
+            {
+                x.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions()
+                {
+                    
+                    Provider = new QueryStringAuthorizationProvider()
+                });
+                var hubConfig = new HubConfiguration()
+                {
+                    EnableDetailedErrors = true,
+                    Resolver = GlobalHost.DependencyResolver
+                };
+                x.RunSignalR();
+            });
+            app.MapSignalR();
+            GlobalHost.HubPipeline.RequireAuthentication();
         }
     }
 }
