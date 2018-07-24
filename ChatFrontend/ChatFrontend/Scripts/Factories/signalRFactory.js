@@ -1,10 +1,11 @@
 ﻿app.factory('signalRFactory', ['$rootScope', function ($rootScope) {
-    //var domainUrl = 'api.bronr.dk';
+    //var domainUrl = 'api.bronr.dk/signalr';
     var domainUrl = 'http://localhost:49689/signalr';
-    var token = localStorage.getItem('access_token');
+    var token;
     var chat;
     return {
         init: function () {
+            token = localStorage.getItem('access_token');
             $.connection.hub.qs = { 'access_token': token  };
             $.connection.hub.url = domainUrl;
             chat = $.connection.chatHub;
@@ -13,11 +14,16 @@
             });
 
             chat.client.recieveRegistration = function (message) {
-
+                alert(message);
+            }
+            chat.client.notAuthenticated = function () {
+                alert("You're not authenticated");
+                $rootScope.logout();
+                $rootScope.$apply();
             }
         },
-        send: function () {
-            chat.server.register($rootScope.appName);
+        send: function (message) {
+            chat.server.register(message);
         }
     }
 }]);

@@ -48,7 +48,6 @@ namespace ChatAPI.App_Start
                 x.RunSignalR();
             });
             app.MapSignalR();
-            GlobalHost.HubPipeline.RequireAuthentication();
         }
     }
 }

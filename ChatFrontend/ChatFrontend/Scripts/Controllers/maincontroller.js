@@ -29,13 +29,13 @@
         data += '&grant_type=password';
         console.log(data);
         $http({
-            url: 'http://api.bronr.dk/authtoken',
+            //url: 'http://api.bronr.dk/authtoken',
+            url: 'http://localhost:49689/authtoken',
             method: 'POST',
             headers: {'content-type': 'application/x-www-form-urlencoded'},
             data: data,
         })
             .then(function (response) {
-                console.log(response);
                 localStorage.setItem("access_token", response.data.access_token);
                 $rootScope.isLoggedIn = true;
             }).catch(function (response) {

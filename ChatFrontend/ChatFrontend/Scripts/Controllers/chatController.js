@@ -1,16 +1,22 @@
 ﻿app.controller('chat', function ($scope, $rootScope, signalRFactory) {
-    signalRFactory.init();
+    $scope.factoryInit = false;
+    $scope.entry = "";
     $scope.enter = function (event) {
         if (event.which === 13) {
             $scope.submit();
-            $scope.entry = "";
         }
     }
     $scope.submit = function () {
-        signalRFactory.send();
+        console.log($scope.entry);
+        signalRFactory.send($scope.entry);
     }
-    $scope.logout = function () {
+    $rootScope.logout = function () {
         localStorage.removeItem('access_token');
         $rootScope.isLoggedIn = false;
     }
+    $rootScope.$watch('isLoggedIn', function (val) {
+        if (!$scope.factoryInit && val === true) {
+            signalRFactory.init();
+        }
+    });
 });
